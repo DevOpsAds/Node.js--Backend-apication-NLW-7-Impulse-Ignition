@@ -1,0 +1,158 @@
+
+## titulo de estudos isso e um rascunho não fiz o minímo de questão em portugues
+
+
+yarn add express
+yarn add ts-node-dev
+yarn add -D @type/express typescript ts-node-dev
+yart tsc --init // para criar o arquivo tsconfig este arquivo contem dados de configuração do compiladorOpitions 
+vamos auterara o o saida 
+"strict" para "false" assim vamos inibir os seus resultados de saida 
+e também vamos alterar o "target":"para es2017"
+
+
+Passamos a configurar o arquivo app
+
+yarn add prisma
+yarn prisma init
+
+-sobrescrever o arquivo prisma.
+
+-configurar o GitHub Oauth
+(Obter CLIENT ID & CLIENT SECRETS)
+
+configurar o .env
+criar a configuração com express 
+ 
+ const app=express()
+ app.listen(4000,console.log("este servidor esta ativo na porta 4000 rodando"))
+
+configure uma chamada para o github checando a porta 
+ apt.get("/github",(request,response)=>{
+    response.redirect('https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_IDX}')
+ }) 
+
+ INSTALAR DOTENV
+
+ _________________
+yarn add dotenv
+
+
+import dotenv/config 
+
+rode a aplicação 
+
+crie um rota de callback
+pegando o o resquest.query para const{code}
+retone um json(code)
+
+crie um serviço 
+autehnticate user service
+async execult (code:string)
+
+export {authentication;...}
+
+crie um controller authenticate user controller
+asycn handle (req: Request,res:Response){
+    instancie em uma variavel o servervico de autenicação 
+    ne
+
+}
+export{...}
+
+volte para criar regra de negocio da camada de serviços 
+
+receber o codico
+recuperar o acess_token do github
+verifica se o usuario exite 
+caso sim ele gera um token
+     nao =cria no bd e gera um token
+retorna o token com as info do user
+
+
+autehnticate user service
+async execult (code:string)
+   entao ele cria a const url="http://github.com/login/oauth/acces_token"
+
+    a chamda para url acima deve ser completada
+
+    criando a chamada a uma url
+    const response=await axiox.post(url,null,{
+        param:{
+            client_id: process.env.GIT>>>
+            client_secret:process.env.GIT,
+            code,
+        },
+        headers:{
+            "accept":"aplication/json"
+        }
+    })
+    result vide pagina de codigos apartir de agora esta página apenas conterá informações sobre fundamento não sera mais possivel digitar codigo aqui ojk
+
+export {authentication;...}
+siga pagina de codigos abra o postman
+rode a aplicação crie um backend no postman
+rode um codigo json = este ->
+
+{
+    "code":"use o codigo que o git enviou "
+}
+
+nesta altura já tive que arrumar uns erros que nao foram previstos
+a instalação do axios  e tipagens visto video
+falta de antenção yarn add @types/axios -D
+
+atenção para trabalho com respostos de servidor via url
+sitar em await 
+porque requer aguardar resposta para continuar
+sitar axios 
+porque e a libe de comunicacão ou o discador 
+-sitar post 
+pois e o metodo e metodo responsavel por trasito de informoçõs
+a abertura de um ()parentese  de regra geral pelo que aprendi em minha jornada imensa nao se trata de algo amais do que adicionar parametros nao confunda isso mais nunca!!!
+outrora os paramentros podem ser o mais estranhos possivel somente isso tenho visto de diferente na programação de de discos
+vejamos os parametro como nada mais que paramatreos  a partir de agora podemos capiturar em linhas separadas os especimes de paramentor
+
+ 
+
+a instalaçao do body-parse para litura de formatos
+json 
+
+*-instalar mais uma dependêcias jsonwebtoken que vai ajudar a cria um token que e do tipo jwt istale as tipagens do jsonwebtoken
+
+da uma olhada em novo capitulo configurãçoes de plugins visual code
+
+**/configurar o prisma schema.prismas
+obs:. atentente-se que ao executar o primas precisamos ediar o arquivo packege.json
+na sua linha de de start script passando o mesmo o que era antes
+"script":{
+    "dev": "ts-node-dev src/app.ts"
+}
+agora passa a agir o inicio do bd 
+entao
+"script":{
+    "dev": "ts-node-dev --exit-child src/app.ts" 
+}
+em parametros opcionais coloque o  ? na frente da configuração do banco
+
+- tabela de users
+rode o comando para migrate 
+yarn prisma migrate dev
+
+seguimos consultar se o user existe em banco de dados
+depois a criação de usuario 
+após iniciamos os  seviços de mensagem
+
+crie o pacote de controller do serviço de mensagem
+
+praguimantico pacote de controller  vamos aos fatos ?
+encare o primeiro
+
+no projeto original foi implementado o import das func (Request,Response)from express  
+no script ads essa foi omitida
+
+apos a criação do CreateMessageControle 
+
+// commit cadastro de mensagens
+
+

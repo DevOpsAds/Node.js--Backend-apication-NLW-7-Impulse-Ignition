@@ -1,0 +1,257 @@
+// de analistas de sistemas para analistas: 
+
+.env 
+
+ GITHUB_CLIENT_ID=XHJBHH
+ GITHUB_CLIENT_SCRET=XHJBHH
+ JTW_SCRET=generatorMD5
+
+
+
+
+
+app.ts
+
+
+import dotenv/config;
+import express from express;
+import {router} form './router';
+import {bodyParse} from 'body-parse'
+
+
+const app=express()
+app.use(bodyParse.json())
+
+
+
+app.use(express.json())// para ler .json
+
+
+
+app.get("/github",(request,response)=>{
+	response.redirect(
+	`https://github.com/oauth/athorize?client_id=${GITHUB_CLIENT_ID}`) 
+
+})
+
+
+app.get("/signin/callback",(request,response)=>{
+	const{code}=request.query
+	return response.json(code)
+})
+
+
+app.use(router);
+
+
+app.listen(4000,()=>cosole.log"Accept ativid running service ok start")
+
+
+
+
+
+
+
+AuthenticateUserService.ts
+
+/*
+ *Receber code{string}
+ *Recuperar o access_token no github
+ *Recuperar infos do user no github
+ *Verificar se o usuario existe no DB
+ 	---SIM-Gerar Token
+ 	---NÃO-Cruar no DB, gerar um Token
+ *Retornar o Token con as infos do user 
+*/ 
+
+import axios from 'axios'
+import prismaClient from "../prisma"
+import {sign}from "jsonwebtoken"
+
+
+inteface IAccesTokenResponse{
+	acess_token:string
+
+}
+
+class AuthenticateUserService{
+	const url="https://github.com/login/oauth/acces_token"
+	async execulte (code:string){
+		const {data:accessTokenResponse}=await axios.post<IAccesTokenRensponse>(url,null,{
+			params:{
+				client_id:process.env.GITHUB_CLIENT_ID,
+				client_secret:process.env.GITHUB_CLIENT_SCRET,
+				code
+			},
+			headers:{
+				"Accept":'aplication/json'
+			}
+
+		})	
+
+		const response=await axios.get("https://api/github.com/user",{
+			headers:{
+				athorization:`Bearer ${accessTokenResponse.access_token}`
+			}
+		})
+
+		const {id,avatar_url,login,name}=response.data
+
+		const user=await prismaClient.user.FindFrist({
+		github_id:id,
+		})
+
+		if (!user){
+			await prismaClient.user.create{
+				data:{
+					github_id:id,
+					name,
+					login,
+					avatar
+
+				}
+
+			}
+		}
+
+		const token =sign({
+			user:{
+				name:user.name,
+				avatar_url:user.avatar_url
+				id:user.id
+				 },
+				 process.env.JTW_SCRET
+				 ,{
+				 	subject=user.id,
+				 	expiresIn:"1d"
+
+				 }
+
+
+		})
+
+
+
+
+
+
+
+
+		return response.data
+	}
+}
+
+export AuthenticateUserService
+
+
+
+
+
+
+
+AuthenticateUserController.ts
+
+
+import {Request,Response} from 'express'
+
+
+class AuthenticateUserController {
+
+	async handle(request:Request, response:Response){
+		const {code}=request.body
+		const {service}=new AuthenticateUserService()
+		try{
+		const {result}= await service.execulte(code)
+        return response.json(result)
+        }catch(err){
+        return response.json({error:err.menssage})	
+        }
+	}
+}
+
+export {AuthenticateUserController}
+
+
+
+
+
+routes.ts 
+
+import {Routes} from express
+import {AuthenticateUserCotroller} from './controller/AuthenticateUserController'
+
+const router=Routes()
+
+router.post("/authenticate",new AuthenticateUserController().handle)
+
+
+
+export{routes}
+
+
+
+// para resolver o problema adicionado o body-parser e top,
+
+
+-prisma.schema
+
+datasource db{
+	provider = "sqlite"
+	url		 = "file:./dev.db"	
+}
+
+generator client{
+	provider"prisma-client-js"
+}
+
+model User{
+	id  String @id @default(iduu())
+	name String
+	github_id Int
+	avatar String ?
+	Log String
+
+@@map ('users')
+
+menssage, Menssage[]
+
+}
+
+model Menssage{
+	id  String @id @defautl(iduu())
+	text String 
+	create_ad Datetime @defautl(now())
+
+	user User @relation(fields:[user_id],references:[id]) 
+
+	user_id String
+
+@@map ('menssage')
+
+
+}
+
+
+
+// commitar cadastro de mensagens
+
+CreateMenssageService.ts
+import prismaClient from "..prisma"
+
+class  CreateMenssageService{
+	async execulte(user_id:string, text:string){
+		const menssage= await prismaClient.menssage.create({
+			date:{
+				user_id,
+				text
+			},include:{
+				user:true
+			}
+		}) 
+
+		return menssage
+	}
+
+}
+export{CreateMenssageService}
+
