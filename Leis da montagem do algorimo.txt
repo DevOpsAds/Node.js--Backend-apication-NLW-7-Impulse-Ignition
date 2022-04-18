@@ -155,4 +155,17 @@ apos a criação do CreateMessageControle
 
 // commit cadastro de mensagens
 
+feito e preciso interceptar o login do usuario ou seja somente usuarios logados e atenticados no projeto podem adicionar mensagens entao a solução para isso e um middleware
+
+entendendo o middleware
+sabendo que os usuario que estao autenticado no sistema recebem um token entao basta verificar quem ja recebeu o tokem ou se o usuario recebeu o tokem pra ser mais claro foca na linha 
+
+const  authToken =request.headers.authorization ->vide codig ads
+
+para tratar o request.use_id como string foi implementado a interface
+e override in packages @types
+e express/Index
+
+
+
 
