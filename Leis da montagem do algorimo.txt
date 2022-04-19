@@ -196,7 +196,10 @@ agora hablitaremos troca de mensagens entre usuarios conectos importando ao IO  
 
 modificar o package.json
  linha do script start passa a ser jamada 
+  // "dev": "ts-node-dev --exit-child src/app.ts"
  "dev":"ts-node-dev --exit-child src/server.ts"
+
+ implemente a busca pelas 3 ultimas messages 
 
 
 
