@@ -171,7 +171,32 @@ e express/Index
 beleza de volta 11:57 ja iniciei o postman bora fazer os teste 
 gerar o token
 
-incluir o token na rota de criação  opção Auth bearer toke
+incluir o token na rota de criação  opção Auth bearer token
+
+configurate
+next
+instale o primas estudio yarn prisma studio ,
+acesse pelo http://localhost:5555
+
+configurando webSocket usando Socket_IO
+yarn add socket.io
+yarn add @types/socket.io
+
+configure a entrada do socket em app.ts vide codigo ads
+
+install cors e suas dependencias este pacote sever para permir ou barra requisições ao servidor ou seja parametos de comunição entre cliente e servidor
+
+em app.ts configure o cores -VDC:{{}}
+configur um novo listen  
+crie um arquivo html adicione no arquivo alguns script sendo um mais importate o script CDN
+https://socket.io/docs/v4/client-installation/ -VDC:{{}}
+
+agora hablitaremos troca de mensagens entre usuarios conectos importando ao IO  ao messageSevervice VDC 
+
+
+modificar o package.json
+ linha do script start passa a ser jamada 
+ "dev":"ts-node-dev --exit-child src/server.ts"
 
 
 
