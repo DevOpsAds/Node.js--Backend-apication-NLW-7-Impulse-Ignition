@@ -168,6 +168,12 @@ e express/Index
 
 2000year last [erro do user solucionado comento amanhã tenho que sair 18:00hs
 
+beleza de volta 11:57 ja iniciei o postman bora fazer os teste 
+gerar o token
+
+incluir o token na rota de criação  opção Auth bearer toke
+
+
 
 
 
