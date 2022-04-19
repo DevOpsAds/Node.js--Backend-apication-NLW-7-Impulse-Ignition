@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <H1>NLE Heat</H1>
+    <img src="https://wd.imgix.net/image/dPDCek3EhZgLQPGtEG3y0fTn4v82/KFqGlM5UJkIYrjGKHlsa.jpg?auto=format&w=964">
 </head>
 <body>
     <!-- link CDN socket io -->
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
     <script>
         const socket=io("http://localhost:4000")
-        socket.on("new_message",date=>console.log(data))
+        socket.on("new_message",(data)=>console.log(data))
     </script>
 </body>
 </html>
