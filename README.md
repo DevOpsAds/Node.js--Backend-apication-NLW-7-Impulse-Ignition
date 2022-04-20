@@ -1,23 +1,35 @@
-# projeto criado em React 
-##`inicie o projeto com`
-line code: #yarn dev
+
+
+## Aplication technology ´NODE.JS - PRISMA -SOCKET-IO ´
+# Getting Started with Create React App
+
+#clone o repositório
+
+![Isso é uma imagem](https://poiemaweb.com/img/socketio-logo.png)
 
 
 
-## necessário criar um arquivo .env src configurar os acesso ao github
-OAuth apps
-##https://github.com/settings/developers
- crie as variaveis in file .env 
- 
+## `.env (CRIE um file)`
+-crie as variáveis de ambinte:
 
-GITHUB_CLIENT_SECRET=55.......7
-GITHUB_CLIENT_ID=cxxx....
-<!-- 
-use um md5 generator para rodar um code down
-link: 
-https://www.google.com/search?q=md5+generator&oq=md5+generator&aqs=chrome.0.69i59j0i512l4j0i22i30l2j69i60.1800j0j9&sourceid=chrome&ie=UTF-8 -->
-JWT_SECRET=okokok....
+GITHUB_CLIENT_ID=
 
+GITHUB_CLIENT_SECRET=
+
+JWT_SECRET=
+
+-para gerara as credenciais crie uma nova aplicação em   [GitHub Developers](https://github.com/settings/developers). 
+
+para criar um JWT_SECRET se preferir pode usar um gerador de hash [MD5 Hash Generator](https://www.md5hashgenerator.com/). 
+
+
+### `yarn dev`
+
+Runs the app in the development mode.\
+
+Open [http://localhost:4000/github].
+
+@DevOpsAds :+1: Este PR parece ótimo - está pronto para o merge! :shipit:
 
 
 
@@ -29,17 +41,13 @@ leis da montagem do algoritmo apesar de um ser um rascunho pode ajudar
 
  for more information use este 
 
-### `rode as migrate`
+### `rode as migrate caso necessario`
 yarn prisma migrate dev
 
 
 ### `Runs the app in the development mode.
 Open [http://localhost:4000/github].`
 
-**warning! esse material ainda esta em desenvolvimento no momento**
+**warning! esse material ainda esta em desenvolvimento no momento verifique o repositório front-end**
 at the moment you may not be satisfied with the build tool and the configuration choicet.
-
-
-
-
 
