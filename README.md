@@ -28,4 +28,4 @@ Runs the app in the development mode.\
 
 Open [http://localhost:4000/github].
 
-@octocat :+1: Este PR parece ótimo - está pronto para o merge! :shipit:
+@DevOpsAds :+1: Este PR parece ótimo - está pronto para o merge! :shipit:
